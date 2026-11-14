@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyHub — Área de Estudos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>📚 StudyHub</h1>
+  <nav>
+    <button class="tab active" data-tab="pomodoro">⏱️ Pomodoro</button>
+    <button class="tab" data-tab="flashcards">🃏 Flashcards</button>
+    <button class="tab" data-tab="notas">📝 Notas</button>
+    <button class="tab" data-tab="progresso">📊 Progresso</button>
+  </nav>
+</header>
+
+<main>
+  <!-- POMODORO -->
+  <section id="pomodoro" class="panel active">
+    <div class="card center">
+      <div id="timer-display">25:00</div>
+      <div class="mode-switch">
+        <button id="mode-focus" class="mode active">Foco 25min</button>
+        <button id="mode-break" class="mode">Pausa 5min</button>
+      </div>
+      <div class="timer-buttons">
+        <button id="btn-start" class="btn primary">▶ Iniciar</button>
+        <button id="btn-reset" class="btn">↺ Reiniciar</button>
+      </div>
+      <p class="muted" id="pomodoro-count">Pomodoros hoje: 0</p>
+    </div>
+  </section>
+
+  <!-- FLASHCARDS -->
+  <section id="flashcards" class="panel">
+    <div class="card">
+      <h2>Nova pergunta</h2>
+      <input id="fc-q" placeholder="Pergunta (ex: O que é fotossíntese?)">
+      <input id="fc-a" placeholder="Resposta">
+      <button id="fc-add" class="btn primary">Adicionar</button>
+    </div>
+    <div class="card">
+      <h2>Revisar</h2>
+      <div id="fc-empty" class="muted">Sem flashcards ainda. Adiciona alguns acima!</div>
+      <div id="fc-card" class="hidden">
+        <div id="fc-side" onclick="flipCard()">?</div>
+        <div class="timer-buttons">
+          <button class="btn" onclick="prevCard()">← Anterior</button>
+          <button class="btn" onclick="flipCard()">🔁 Virar</button>
+          <button class="btn" onclick="nextCard()">Próxima →</button>
+        </div>
+        <p class="muted" id="fc-progress"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTAS -->
+  <section id="notas" class="panel">
+    <div class="card">
+      <h2>Nova nota</h2>
+      <input id="nota-titulo" placeholder="Título (ex: Matemática — Cap. 3)">
+      <textarea id="nota-texto" placeholder="Escreve a tua nota..."></textarea>
+      <button id="nota-add" class="btn primary">Salvar nota</button>
+    </div>
+    <div id="notas-lista"></div>
+  </section>
+
+  <!-- PROGRESSO -->
+  <section id="progresso" class="panel">
+    <div class="card">
+      <h2>📊 O teu progresso</h2>
+      <div class="stats">
+        <div class="stat"><span id="stat-pomodoros">0</span><small>pomodoros</small></div>
+        <div class="stat"><span id="stat-flashcards">0</span><small>flashcards</small></div>
+        <div class="stat"><span id="stat-notas">0</span><small>notas</small></div>
+      </div>
+      <h3>Últimos 7 dias (pomodoros)</h3>
+      <div id="chart"></div>
+    </div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
